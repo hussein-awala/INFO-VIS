@@ -41,7 +41,10 @@ def get_products_info():
     products_in_country=pd.DataFrame(countries[countries['country']==country]['code'])
     product=pd.read_csv('tsv/products.tsv','\t',low_memory=False)[['code','energy_100g','n_additives','proteins_100g','fat_100g','carbohydrates_100g','sugars_100g','saturated-fat_100g','salt_100g','sodium_100g']]
     product=products_in_country.merge(product,left_on='code',right_on='code')
-    return str(product)
+    data=dict({})
+    for i in product.columns:
+        data[i]=product[i].dropna().tolist()
+    return jsonify(data)
 if __name__ == "__main__":
 	app.run()
 
