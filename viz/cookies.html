@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css" media="screen, print">
+			body { margin: 30px 50px; font-family: sans-serif; }
+			.float_right {
+				float: right;
+				display: inline-block;
+				width: 200px;
+				height: 300px;
+				padding: 10px;
+				border: solid 1px black;
+				background-color: lightyellow;
+			}
+			#title { font-weight: bold; }
+		</style>
+		<title>Cookies</title>
+	</head>
+	<body>
+		<h1>Cookies</h1>
+		
+		<p>
+		Scatterplot of the <a href="https://world.openfoodfacts.org/category/cookies">cookies</a> category.
+		</p>
+		
+		<svg id="graph" />
+		<div class="float_right">
+			<p id="title" > </p>
+			<img id="picture"/>
+		</div>
+		
+		<script src="../vendor/d3/d3.js"></script>
+		<script>
+
+var margin = {top: 100, right: 100, bottom: 40, left: 100},
+    width = 800 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+var x = d3.scaleLinear()
+    .range([0, width]);
+
+var y = d3.scaleLinear()
+    .range([height, 0]);
+
+var size = d3.scaleSqrt()
+	.range([0, 4])
+
+var svg = d3.select('#graph')
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var picture = d3.select('img#picture');
+var title   = d3.select('p#title');
+
+d3.queue()
+	.defer(d3.tsv, "../tsv/products_categories_full.tsv")
+	.defer(d3.tsv, "../tsv/products.tsv")
+	.await(combine)
+
+function combine(error, categories, products) {
+	if(error) throw error;
+	
+	cookies_codes = categories
+		.filter(d => d.category == "cookies")
+		.map(d => d.code);
+	
+	cookies = products
+		.filter(d => cookies_codes.includes(d.code))
+		.filter(d => d.fat_100g != "" && d.sugars_100g != "")
+		.filter(d => +d.fat_100g + +d.sugars_100g < 100);
+	
+	x.domain([0, d3.max(cookies, d => +d.sugars_100g)]).nice();
+	y.domain([0, d3.max(cookies, d => +d.fat_100g)]).nice();
+	size.domain([0, d3.max(cookies, d => +d.energy_100g)]);
+	
+	var g = svg.selectAll('.cookies')
+		.data(cookies)
+		.enter().append('g')
+			.attr('class', 'cookies')
+			.attr('transform', d => 'translate('+x(+d.sugars_100g)+','+y(+d.fat_100g)+')')
+			.on('mouseover', function(d, i) {
+				picture.attr('src', d.image);
+				title.text(d.name);
+			});
+	
+	g.attr('fill', function(d) {
+		switch(d.nutriscore) {
+		case 'a': return d3.rgb(  0, 191,   0);
+		case 'b': return d3.rgb(115, 255,   0);
+		case 'c': return d3.rgb(255, 204,   0);
+		case 'd': return d3.rgb(255, 102,   0);
+		case 'e': return d3.rgb(255,  25,   0);
+		default:  return d3.rgb(191, 191, 191);
+		};
+	});
+	
+	g.append('a')
+		.attr('href', d => "https://world.openfoodfacts.org/product/" + d.code)
+		.attr('target', '_blank')
+		.append('circle')
+			.attr('r', d => size(+d.energy_100g));
+
+	g.append('title')
+		.text(d => d.name + "\n" + d.code);
+
+	var xaxis = svg.append('g')
+		.attr('transform', 'translate(0,' + (y(0)+5) +')');
+	xaxis.append('text')
+		.text("Sugars (g/100g) ")
+		.attr('fill', "black")
+		.attr("x", width)
+		.attr("y", "-.5em")
+		.attr("text-anchor", "end");
+	xaxis.call(d3.axisBottom(x));
+
+	var yaxis = svg .append('g')
+		.attr('transform', 'translate(' + (x(0)-5) +')');
+	yaxis.append('text')
+		.text("Fat (g/100g) ")
+		.attr('fill', "black")
+		.attr("y", "1.25em")
+		.attr("transform", "rotate(-90)")
+		.attr("text-anchor", "end");
+	yaxis.call(d3.axisLeft(y));
+
+}
+
+		</script>
+	</body>
+</html>

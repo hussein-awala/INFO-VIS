@@ -1,0 +1,243 @@
+,id,name
+0,CHN,China
+1,IND,India
+2,USA,United States
+3,IDN,Indonesia
+4,BRA,Brazil
+5,PAK,Pakistan
+6,BGD,Bangladesh
+7,NGA,Nigeria
+8,RUS,Russia
+9,JPN,Japan
+10,MEX,Mexico
+11,PHL,Philippines
+12,VNM,Vietnam
+13,ETH,Ethiopia
+14,DEU,Germany
+15,EGY,Egypt
+16,TUR,Turkey
+17,COD,"Congo, Democratic Republic of the"
+18,IRN,Iran
+19,THA,Thailand
+20,FRA,France
+21,GBR,United Kingdom
+22,ITA,Italy
+23,MMR,Burma
+24,ZAF,South Africa
+25,KOR,"Korea, South"
+26,UKR,Ukraine
+27,COL,Colombia
+28,SDN,Sudan
+29,TZA,Tanzania
+30,ARG,Argentina
+31,ESP,Spain
+32,KEN,Kenya
+33,POL,Poland
+34,DZA,Algeria
+35,CAN,Canada
+36,UGA,Uganda
+37,MAR,Morocco
+38,PER,Peru
+39,IRQ,Iraq
+40,SAU,Saudi Arabia
+41,AFG,Afghanistan
+42,NPL,Nepal
+43,UZB,Uzbekistan
+44,VEN,Venezuela
+45,MYS,Malaysia
+46,GHA,Ghana
+47,YEM,Yemen
+48,TWN,Taiwan
+49,PRK,"Korea, North"
+50,SYR,Syria
+51,ROU,Romania
+52,MOZ,Mozambique
+53,AUS,Australia
+54,LKA,Sri Lanka
+55,MDG,Madagascar
+56,CIV,Cote d'Ivoire
+57,CMR,Cameroon
+58,NLD,Netherlands
+59,CHL,Chile
+60,BFA,Burkina Faso
+61,NER,Niger
+62,KAZ,Kazakhstan
+63,MWI,Malawi
+64,ECU,Ecuador
+65,KHM,Cambodia
+66,SEN,Senegal
+67,MLI,Mali
+68,GTM,Guatemala
+69,AGO,Angola
+70,ZMB,Zambia
+71,ZWE,Zimbabwe
+72,CUB,Cuba
+73,RWA,Rwanda
+74,GRC,Greece
+75,PRT,Portugal
+76,TUN,Tunisia
+77,TCD,Chad
+78,BEL,Belgium
+79,GIN,Guinea
+80,CZE,Czech Republic
+81,SOM,Somalia
+82,BOL,Bolivia
+83,HUN,Hungary
+84,BDI,Burundi
+85,DOM,Dominican Republic
+86,BLR,Belarus
+87,HTI,Haiti
+88,SWE,Sweden
+89,BEN,Benin
+90,AZE,Azerbaijan
+91,AUT,Austria
+92,HND,Honduras
+93,CHE,Switzerland
+94,TJK,Tajikistan
+95,ISR,Israel
+96,SRB,Serbia
+97,BGR,Bulgaria
+98,HKG,Hong Kong
+99,LAO,Laos
+100,LBY,Libya
+101,JOR,Jordan
+102,PRY,Paraguay
+103,TGO,Togo
+104,PNG,Papua New Guinea
+105,SLV,El Salvador
+106,NIC,Nicaragua
+107,ERI,Eritrea
+108,DNK,Denmark
+109,KGZ,Kyrgyzstan
+110,SVK,Slovakia
+111,FIN,Finland
+112,SLE,Sierra Leone
+113,ARE,United Arab Emirates
+114,TKM,Turkmenistan
+115,CAF,Central African Republic
+116,SGP,Singapore
+117,NOR,Norway
+118,BIH,Bosnia and Herzegovina
+119,GEO,Georgia
+120,CRI,Costa Rica
+121,HRV,Croatia
+122,MDA,Moldova
+123,NZL,New Zealand
+124,IRL,Ireland
+125,COG,"Congo, Republic of the"
+126,LBN,Lebanon
+127,PRI,Puerto Rico
+128,LBR,Liberia
+129,ALB,Albania
+130,LTU,Lithuania
+131,URY,Uruguay
+132,PAN,Panama
+133,MRT,Mauritania
+134,MNG,Mongolia
+135,OMN,Oman
+136,ARM,Armenia
+137,JAM,Jamaica
+138,KWT,Kuwait
+139,PSE,West Bank
+140,LVA,Latvia
+141,NAM,Namibia
+142,MKD,Macedonia
+143,BWA,Botswana
+144,SVN,Slovenia
+145,LSO,Lesotho
+146,GMB,"Gambia, The"
+147,KWT,Kosovo
+148,149,Gaza Strip
+149,GNB,Guinea-Bissau
+150,GAB,Gabon
+151,SWZ,Swaziland
+152,153,Mauritius
+153,EST,Estonia
+154,TTO,Trinidad and Tobago
+155,TLS,Timor-Leste
+156,CYP,Cyprus
+157,FJI,Fiji
+158,QAT,Qatar
+159,160,Comoros
+160,GUY,Guyana
+161,DJI,Djibouti
+162,163,Bahrain
+163,BTN,Bhutan
+164,MNE,Montenegro
+165,GNQ,Equatorial Guinea
+166,SLB,Solomon Islands
+167,168,Macau
+168,169,Cape Verde
+169,LUX,Luxembourg
+170,ESH,Western Sahara
+171,SUR,Suriname
+172,173,Malta
+173,174,Maldives
+174,BRN,Brunei
+175,BLZ,Belize
+176,BHS,"Bahamas, The"
+177,ISL,Iceland
+178,179,French Polynesia
+179,180,Barbados
+180,181,Mayotte
+181,NCL,New Caledonia
+182,183,Netherlands Antilles
+183,VUT,Vanuatu
+184,185,Samoa
+185,186,Sao Tome and Principe
+186,187,Saint Lucia
+187,188,Tonga
+188,189,Virgin Islands
+189,190,Grenada
+190,191,"Micronesia, Federated States of"
+191,192,Aruba
+192,193,Saint Vincent and the Grenadines
+193,194,Kiribati
+194,195,Jersey
+195,196,Seychelles
+196,197,Antigua and Barbuda
+197,198,Andorra
+198,199,Isle of Man
+199,DOM,Dominica
+200,201,Bermuda
+201,202,American Samoa
+202,203,Marshall Islands
+203,204,Guernsey
+204,GRL,Greenland
+205,206,Cayman Islands
+206,207,Saint Kitts and Nevis
+207,208,Faroe Islands
+208,209,Northern Mariana Islands
+209,210,Liechtenstein
+210,211,San Marino
+211,212,Monaco
+212,213,Saint Martin
+213,214,Gibraltar
+214,215,British Virgin Islands
+215,216,Turks and Caicos Islands
+216,217,Palau
+217,218,Akrotiri
+218,219,Dhekelia
+219,220,Wallis and Futuna
+220,221,Anguilla
+221,222,Nauru
+222,223,Cook Islands
+223,224,Tuvalu
+224,225,"Saint Helena, Ascension, and Tristan da Cunha"
+225,226,Saint Barthelemy
+226,227,Saint Pierre and Miquelon
+227,228,Montserrat
+228,FLK,Falkland Islands (Islas Malvinas)
+229,230,Norfolk Island
+230,231,Svalbard
+231,232,Christmas Island
+232,233,Tokelau
+233,234,Niue
+234,235,Holy See (Vatican City)
+235,236,Cocos (Keeling) Islands
+236,237,Pitcairn Islands
+237,ATA,Antarctica
+238,ATF,French Southern and Antarctic Lands
+239,SDS,South Sudan
+240,ABV,Somaliland
+241,OSA,Kosovo

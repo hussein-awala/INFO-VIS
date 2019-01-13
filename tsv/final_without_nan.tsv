@@ -1,0 +1,149 @@
+	id	name	nbOfProduct	nbOfAdditive
+0	CHN	China	72.0	9.0
+1	IND	India	87.0	40.0
+2	USA	United States	3903.0	1907.0
+3	IDN	Indonesia	15.0	5.0
+4	BRA	Brazil	94.0	32.0
+5	PAK	Pakistan	2.0	1.0
+6	BGD	Bangladesh	3.0	2.0
+7	NGA	Nigeria	1.0	0.0
+8	RUS	Russia	1263.0	161.0
+9	JPN	Japan	85.0	18.0
+10	MEX	Mexico	2615.0	1550.0
+11	PHL	Philippines	9.0	6.0
+12	VNM	Vietnam	20.0	9.0
+13	ETH	Ethiopia	1.0	0.0
+14	DEU	Germany	11431.0	3482.0
+15	EGY	Egypt	28.0	13.0
+16	TUR	Turkey	24.0	4.0
+18	IRN	Iran	4.0	0.0
+19	THA	Thailand	64.0	24.0
+20	FRA	France	145747.0	62668.0
+21	GBR	United Kingdom	3805.0	1408.0
+22	ITA	Italy	1325.0	394.0
+24	ZAF	South Africa	132.0	75.0
+26	UKR	Ukraine	9.0	0.0
+27	COL	Colombia	30.0	12.0
+29	TZA	Tanzania	1.0	0.0
+30	ARG	Argentina	37.0	16.0
+31	ESP	Spain	5620.0	2166.0
+32	KEN	Kenya	2.0	1.0
+33	POL	Poland	134.0	54.0
+34	DZA	Algeria	106.0	42.0
+35	CAN	Canada	829.0	389.0
+37	MAR	Morocco	161.0	42.0
+38	PER	Peru	13.0	4.0
+39	IRQ	Iraq	10.0	2.0
+40	SAU	Saudi Arabia	34.0	10.0
+42	NPL	Nepal	1.0	0.0
+44	VEN	Venezuela	1.0	0.0
+45	MYS	Malaysia	9.0	2.0
+46	GHA	Ghana	1.0	0.0
+47	YEM	Yemen	1.0	0.0
+48	TWN	Taiwan	32.0	6.0
+50	SYR	Syria	2.0	1.0
+51	ROU	Romania	226.0	109.0
+52	MOZ	Mozambique	1.0	0.0
+53	AUS	Australia	1297.0	379.0
+54	LKA	Sri Lanka	2.0	0.0
+55	MDG	Madagascar	111.0	68.0
+57	CMR	Cameroon	18.0	11.0
+58	NLD	Netherlands	673.0	261.0
+59	CHL	Chile	42.0	11.0
+60	BFA	Burkina Faso	22.0	7.0
+61	NER	Niger	2.0	0.0
+62	KAZ	Kazakhstan	5.0	0.0
+63	MWI	Malawi	2.0	1.0
+64	ECU	Ecuador	2.0	0.0
+65	KHM	Cambodia	19.0	4.0
+66	SEN	Senegal	65.0	35.0
+67	MLI	Mali	6.0	2.0
+68	GTM	Guatemala	2.0	1.0
+69	AGO	Angola	1.0	0.0
+72	CUB	Cuba	8.0	5.0
+73	RWA	Rwanda	1.0	0.0
+74	GRC	Greece	63.0	24.0
+75	PRT	Portugal	683.0	320.0
+76	TUN	Tunisia	105.0	54.0
+77	TCD	Chad	1.0	1.0
+78	BEL	Belgium	4013.0	1797.0
+79	GIN	Guinea	1.0	0.0
+80	CZE	Czech Republic	126.0	29.0
+83	HUN	Hungary	241.0	98.0
+85	DOM	Dominican Republic	1.0	1.0
+86	BLR	Belarus	2.0	1.0
+88	SWE	Sweden	994.0	505.0
+89	BEN	Benin	2.0	2.0
+90	AZE	Azerbaijan	13.0	0.0
+91	AUT	Austria	403.0	129.0
+92	HND	Honduras	1.0	0.0
+93	CHE	Switzerland	5558.0	2497.0
+95	ISR	Israel	39.0	14.0
+96	SRB	Serbia	540.0	194.0
+97	BGR	Bulgaria	31.0	12.0
+98	HKG	Hong Kong	139.0	46.0
+100	LBY	Libya	1.0	0.0
+101	JOR	Jordan	8.0	0.0
+102	PRY	Paraguay	2.0	1.0
+103	TGO	Togo	4.0	2.0
+105	SLV	El Salvador	2.0	0.0
+108	DNK	Denmark	240.0	116.0
+110	SVK	Slovakia	19.0	4.0
+111	FIN	Finland	62.0	25.0
+113	ARE	United Arab Emirates	33.0	6.0
+115	CAF	Central African Republic	2.0	1.0
+116	SGP	Singapore	24.0	10.0
+117	NOR	Norway	76.0	21.0
+118	BIH	Bosnia and Herzegovina	15.0	4.0
+119	GEO	Georgia	56.0	2.0
+120	CRI	Costa Rica	8.0	3.0
+121	HRV	Croatia	23.0	9.0
+122	MDA	Moldova	3.0	1.0
+123	NZL	New Zealand	87.0	33.0
+124	IRL	Ireland	329.0	167.0
+126	LBN	Lebanon	21.0	4.0
+127	PRI	Puerto Rico	1.0	0.0
+129	ALB	Albania	22.0	3.0
+130	LTU	Lithuania	12.0	5.0
+131	URY	Uruguay	4.0	1.0
+133	MRT	Mauritania	2.0	1.0
+134	MNG	Mongolia	3.0	1.0
+135	OMN	Oman	5.0	2.0
+136	ARM	Armenia	7.0	0.0
+138	KWT	Kuwait	5.0	3.0
+140	LVA	Latvia	8.0	5.0
+144	SVN	Slovenia	30.0	11.0
+147	KWT	Kosovo	3.0	0.0
+150	GAB	Gabon	11.0	2.0
+151	SWZ	Swaziland	3.0	2.0
+152	153	Mauritius	35.0	14.0
+153	EST	Estonia	13.0	6.0
+156	CYP	Cyprus	7.0	1.0
+157	FJI	Fiji	2.0	0.0
+158	QAT	Qatar	15.0	3.0
+160	GUY	Guyana	1.0	0.0
+161	DJI	Djibouti	4.0	3.0
+162	163	Bahrain	1.0	0.0
+164	MNE	Montenegro	39.0	15.0
+165	GNQ	Equatorial Guinea	1.0	1.0
+167	168	Macau	2.0	1.0
+169	LUX	Luxembourg	172.0	82.0
+171	SUR	Suriname	1.0	0.0
+172	173	Malta	15.0	4.0
+177	ISL	Iceland	18.0	6.0
+178	179	French Polynesia	270.0	192.0
+180	181	Mayotte	5.0	0.0
+181	NCL	New Caledonia	78.0	26.0
+183	VUT	Vanuatu	1.0	1.0
+191	192	Aruba	2.0	0.0
+195	196	Seychelles	1.0	0.0
+197	198	Andorra	9.0	2.0
+206	207	Saint Kitts and Nevis	3.0	2.0
+209	210	Liechtenstein	1.0	1.0
+211	212	Monaco	13.0	5.0
+212	213	Saint Martin	4.0	1.0
+213	214	Gibraltar	1.0	0.0
+220	221	Anguilla	1.0	0.0
+222	223	Cook Islands	1.0	0.0
+226	227	Saint Pierre and Miquelon	39.0	28.0
+241	OSA	Kosovo	3.0	0.0
