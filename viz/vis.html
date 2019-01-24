@@ -75,6 +75,12 @@
   .details{
     color: white;
   }
+
+  .legend rect {
+    fill:white;
+    stroke:black;
+    opacity:0.8;
+  }
 </style>
 <body>
 <script src="http://d3js.org/d3.v4.min.js"></script>
@@ -82,55 +88,10 @@
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
 <script src="../vendor/d3/d3-tip.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js'></script>
+<script src='../vendor/d3/babel.min.js'></script>
+<script src='../vendor/d3/d3.legend.js'></script>
 <script type="text/javascript">
-
-function f(i,j){
-    var w = 60,                        //width
-    h = 60,                            //height
-    r = 20,                            //radius
-    color = d3.scaleOrdinal(["#ff0000","#009933"]);     //builtin range of colors
-
-    data = [{"label":"", "value":j}, 
-            {"label":"", "value":i-j},];
-    
-    var vis = d3.select("#pop-up")
-        .append("svg:svg")              //create the SVG element inside the <body>
-        .data([data])                   //associate our data with the document
-            .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
-            .attr("height", h)
-        .append("svg:g")                //make a group to hold our pie chart
-            .attr("transform", "translate(" + r + "," + r + ")")    //move the center of the pie chart from 0, 0 to radius, radius
-
-    var arc = d3.arc()              //this will create <path> elements for us using arc data
-        .outerRadius(r);
-
-    var pie = d3.pie()           //this will create arc data for us given a list of values
-        .value(function(d) { return d.value; });    //we must tell it out to access the value of each element in our data array
-
-    var arcs = vis.selectAll("g.slice")     //this selects all <g> elements with class slice (there aren't any yet)
-        .data(pie)                          //associate the generated pie data (an array of arcs, each having startAngle, endAngle and value properties) 
-        .enter()                            //this will create <g> elements for every "extra" data element that should be associated with a selection. The result is creating a <g> for every object in the data array
-            .append("svg:g")                //create a group to hold each slice (we will have a <path> and a <text> element associated with each slice)
-                .attr("class", "slice");    //allow us to style things in the slices (like text)
-
-        arcs.append("svg:path")
-                .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
-                .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
-
-        arcs.append("svg:text")                                     //add a label to each slice
-                .attr("transform", function(d) {                    //set the label's origin to the center of the arc
-                //we have to make sure to set these before calling arc.centroid
-                d.innerRadius = 0;
-                d.outerRadius = r;
-                return "translate(" + arc.centroid(d) + ")";        //this gives us a pair of coordinates like [50, 50]
-            })
-            .attr("text-anchor", "middle")                          //center the text on it's origin
-            .text(function(d, i) { return data[i].label; });
-
-        console.log(i);        //get the label from our original data array
-        }
-    </script>
+</script>
 <script lang='babel' type='text/babel'>
 
 const format = d3.format(',');
@@ -138,11 +99,11 @@ const format = d3.format(',');
 // Set tooltips
 const tip = d3.tip()
   .attr('class', 'd3-tip')
-  .attr('id','pop-up')
   .offset([-10, 0])
-  .html(d => `<article><strong>Country: </strong><span class='details'>${d.properties.name}<br></span><strong>Nb Of Products: </strong><span class='details'>${format(d.nbOfProduct)}<br></span><strong>Nb Of Additive: </strong><span class='details'>${format(d.nbOfAdditive)}</span></article>`);
+  .html(d => `<article><strong>Country: </strong><span class='details'>${d.properties.name}<br></span><strong>Number Of Products: </strong><span class='details'>${format(d.nbOfProduct)}<br></span><strong>Number Of Having Additive: </strong><span class='details'>${format(d.nbOfAdditive)}</span><br><strong>Percentage of Products having Additives: </strong><span class='details'>${format(Math.round((d.nbOfAdditive/d.nbOfProduct)*100))}%</article>
+  <svg id="hSvg" width="100" height="100"> </svg>`);
 
-const margin = {top: -100, right: 0, bottom: 0, left: 100};
+const margin = {top: -300, right: 0, bottom: 0, left: 100};
 const width = 960*2 - margin.left - margin.right;
 const height = 500*2 - margin.top - margin.bottom;
 
@@ -184,7 +145,9 @@ const projection = d3.geoRobinson()
   .rotate([352, 0, 0])
   .translate( [width / 2, height / 2]);
 
+//console.log(d3.geoRobinson());
 const path = d3.geoPath().projection(projection);
+
 
 svg.call(tip);
 
@@ -195,17 +158,15 @@ queue()
 
 function ready(error, data, dataset) {
 
-
-
   const nbProductsById = {};
   const nbAdditivesById = {};
   dataset.forEach(d => { nbProductsById[d.id] = +d.nbOfProduct; });
   dataset.forEach(d => { nbAdditivesById[d.id] = +d.nbOfAdditive; });
   data.features.forEach(d => { d.nbOfProduct = nbProductsById[d.id] });
   data.features.forEach(d => { d.nbOfAdditive = nbAdditivesById[d.id] });
+  //console.log(data.features);
 
-  console.log(data.features);
-
+  console.log(path);
   svg.append('g')
     .attr('class', 'countries')
     .selectAll('path')
@@ -222,21 +183,71 @@ function ready(error, data, dataset) {
         d3.select(this)
           .style('opacity', 1)
           .style('stroke-width', 3);
-          f(d.nbOfProduct,d.nbOfAdditive);
-      })
-      .on('mouseout', function(d){
+
+
+
+        var data = [
+          {"label": Math.round((nbAdditivesById[d.id]/nbProductsById[d.id])*100) + "%", "data": nbAdditivesById[d.id]}, 
+          {"label": "", "data": nbProductsById[d.id] - nbAdditivesById[d.id]}
+        ];
+
+        var hSvg = d3.select("#hSvg"),
+          width = hSvg.attr("width"),
+          height = hSvg.attr("height"),
+          radius = Math.min(width, height) / 2,
+          g = hSvg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+          var color = d3.scaleOrdinal(["#ff0000", "#009933"]);
+
+          // Generate the pie
+        var pie = d3.pie().value(function(d) {
+            console.log(d);
+            return d.data;
+        });
+
+        
+        // Generate the arcs
+        var arc = d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius);
+
+        var label = d3.arc()
+            .outerRadius(50)
+            .innerRadius(30);
+
+
+        //Generate groups
+        var arcs = g.selectAll("arc")
+            .data(pie(data))
+            .enter()
+            .append("g")
+            .attr("class", "arc")
+
+        //Draw arc paths
+        arcs.append("path")
+          .attr("fill", function(d, i) {
+              return color(i);
+          })
+          .attr("d", arc);
+
+        arcs.append("text")
+            .attr("transform", function(d) { 
+                return "translate(" + label.centroid(d) + ")"; 
+            })
+            .text(function(d) { return d.data.label; });
+      }).on('mouseout', function(d){
         tip.hide(d);
         d3.select(this)
           .style('opacity', 0.8)
           .style('stroke-width',0.3);
+      }).on('click', function(d) {
+          window.open("adaptives.html?country=" + (d.properties.name).toLowerCase());
       });
 
   svg.append('path')
     .datum(topojson.mesh(data.features, (a, b) => a.id !== b.id))
     .attr('class', 'names')
     .attr('d', path);
-
-
 }
 </script>
 </body>

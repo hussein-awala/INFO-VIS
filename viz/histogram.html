@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+svg {
+  height: 1000px;
+  width:  100%;
+}
+
+.bar rect {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.bar text {
+  fill: #fff;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+var country=new URL(window.location.href).searchParams.get('country')
+var myjson;
+var margin = {top: 50, right: 30, bottom: 30, left: 30},
+        width = 1500 - margin.left - margin.right,
+        height = 800 - margin.top - margin.bottom;
+var formatCount = d3.format(",.0f");
+
+$.getJSON('http://127.0.0.1:5000/get_products_info?country='+country, function (json) {
+      myjson = json;
+}).then(function (d) {
+    // console.log(myjson);
+
+    Object.keys(myjson).forEach(function(k){
+
+        values = myjson[k];
+            var x = d3.scale.linear()
+                .domain([0, d3.max(values, function(d) {  return  d; })])
+                .range([0, width]);
+              
+            // Generate a histogram using twenty uniformly-spaced bins.
+            var data = d3.layout.histogram()
+                .bins(x.ticks(20))
+                (values);
+
+            var y = d3.scale.linear()
+                .domain([0, d3.max(data, function(d) { 
+                  console.log(d.y);
+                  return d.y; 
+                })]).range([height, 0]);
+
+            var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom");
+
+            var svg = d3.select("body").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            var bar = svg.selectAll(".bar")
+                .data(data)
+              .enter().append("g")
+                .attr("class", "bar")
+                .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+            bar.append("rect")
+                .attr("x", 1)
+                .attr("width", x(data[0].dx) - 1)
+                .attr("height", function(d) { return height - y(d.y); });
+
+            bar.append("text")
+                .attr("dy", ".75em")
+                .attr("y", 6)
+                .attr("x", x(data[0].dx) / 2)
+                .attr("text-anchor", "middle")
+                .text(function(d) { return formatCount(d.y); });
+
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+
+            var x = d3.scale.linear()
+                .domain([0, d3.max(values, function(d) { if (d < 100) return  d; })])
+                .range([0, width]);
+
+            svg.append("text")
+                    .attr("x", (width / 2))             
+                    .attr("y", 0 - (margin.top / 2))
+                    .attr("text-anchor", "middle")  
+                    .style("font-size", "16px") 
+                    .style("text-decoration", "underline")  
+                    .text(k);    
+        
+    });
+});
+</script>
